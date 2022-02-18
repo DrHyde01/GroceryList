@@ -7,7 +7,7 @@
 body {
   font-family: "Raleway", sans-serif;
   font-size: 1em;
-  background-color: rgb(255, 247, 211);
+  background-color: rgb(247, 242, 223);
 }
 
 .header {
@@ -53,6 +53,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin: 40px;
 }
 
 .add__input {
@@ -90,11 +91,15 @@ body {
 }
 
 .items__container {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  width: 25%;
+  padding: 10px;
+  margin: 40px;
+  background-color: rgb(253, 255, 159);
+  box-shadow: 2px 2px 10px #bdbdbd;
+  transform: rotate(-2deg);
 }
 
 .items__list {
@@ -108,7 +113,7 @@ body {
 }
 
 .delete__btn {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   margin-left: 10px;

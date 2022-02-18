@@ -1,36 +1,47 @@
 let addInput = document.querySelector(".add__input");
 let addBtn = document.querySelector(".add__btn");
+let listContainer = document.querySelector(".items__container");
 let itemList = document.querySelector(".items__list");
 let delBtn = document.querySelector(".delete__btn");
 
-// Localstorage
-let toStorage = () =>
-  localStorage.setItem("Shopping List", JSON.stringify(itemStore)) || [];
-let fromStorage = () => JSON.parse(localStorage.getItem("Shopping List")) || [];
+// FUNCTIONS ---------------------------------------------------
+let storage = {
+  toStorage: () =>
+    localStorage.setItem("Shopping List", JSON.stringify(itemStore)) || [],
 
-const itemStore = fromStorage();
+  fromStorage: () => JSON.parse(localStorage.getItem("Shopping List")) || [],
+};
+
+let storageFunctions = {
+  showItems: () => {
+    itemList.innerHTML = ""; //Show nothing as default
+    if (itemStore.length > 0) {
+      listContainer.style.display = "flex";
+      delBtn.style.display = "flex";
+    }
+    for (item of itemStore) {
+      itemList.innerHTML += `<li class="items__elm">${item}</li>`;
+    }
+  },
+
+  deleteItems: () => {
+    localStorage.clear();
+    location.reload();
+  },
+};
+
+const itemStore = storage.fromStorage();
 
 addBtn.addEventListener("click", () => {
   itemStore.push(addInput.value);
-  toStorage();
+  storage.toStorage();
   //alert(`${addInput.value} a été rajouté`);
   addInput.value = "";
-  showItems(); // To show new items on click
+  storageFunctions.showItems(); // To show new items on click
 });
 
 delBtn.addEventListener("click", () => {
-  deleteItems();
+  storageFunctions.deleteItems();
 });
 
-const showItems = () => {
-  itemList.innerHTML = ""; //Show nothing as default
-  for (item of itemStore) {
-    itemList.innerHTML += `<li class="items__elm">${item}</li>`;
-  }
-};
-
-const deleteItems = () => {
-  localStorage.clear();
-  location.reload();
-};
-showItems();
+storageFunctions.showItems();
