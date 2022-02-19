@@ -2,6 +2,8 @@ let addInput = document.querySelector(".add__input");
 let addBtn = document.querySelector(".add__btn");
 let listContainer = document.querySelector(".items__container");
 let itemList = document.querySelector(".items__list");
+let itemElm = "";
+let delIcon = "";
 let delBtn = document.querySelector(".delete__btn");
 
 // FUNCTIONS ---------------------------------------------------
@@ -18,10 +20,31 @@ let storageFunctions = {
     if (itemStore.length > 0) {
       listContainer.style.display = "flex";
       delBtn.style.display = "flex";
+    } else {
+      listContainer.style.display = "none";
     }
-    for (item of itemStore) {
-      itemList.innerHTML += `<li class="items__elm">${item}</li>`;
+    for (let item of itemStore) {
+      itemElm = document.createElement("li");
+      delIcon = document.createElement("ion-icon");
+      itemElm.classList.add("items__elm");
+      delIcon.classList.add("delete__icon");
+      delIcon.setAttribute("name", "close-outline");
+      itemElm.textContent = `${item}`;
+      itemList.appendChild(itemElm);
+      itemElm.appendChild(delIcon);
     }
+
+    delIcon.addEventListener("click", () => {
+      storageFunctions.deleteOneItem();
+      storageFunctions.showItems();
+    });
+  },
+
+  deleteOneItem: () => {
+    let parentItem = itemElm.parentNode;
+    let elmIndex = [...parentItem.children].indexOf(itemElm);
+    itemStore.splice(elmIndex, 1);
+    storage.toStorage();
   },
 
   deleteItems: () => {
@@ -37,7 +60,7 @@ addBtn.addEventListener("click", () => {
   storage.toStorage();
   //alert(`${addInput.value} a été rajouté`);
   addInput.value = "";
-  storageFunctions.showItems(); // To show new items on click
+  storageFunctions.showItems();
 });
 
 delBtn.addEventListener("click", () => {

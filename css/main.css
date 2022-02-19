@@ -57,8 +57,8 @@ body {
 }
 
 .add__input {
-  height: 40px;
-  width: 300px;
+  height: 50px;
+  width: 400px;
   border-top: none;
   border-bottom: solid 2px rgba(0, 228, 114, 0.829);
   border-left: none;
@@ -86,6 +86,7 @@ body {
 }
 
 .add__btn:hover {
+  transform: scale(1.2);
   box-shadow: 2px 2px 10px #bdbdbd;
   cursor: pointer;
 }
@@ -94,8 +95,8 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  padding: 10px;
+  width: 30%;
+  padding: 15px;
   margin: 40px;
   background-color: rgb(253, 255, 159);
   box-shadow: 2px 2px 10px #bdbdbd;
@@ -104,12 +105,26 @@ body {
 
 .items__list {
   list-style: none;
+  width: 100%;
 }
 
 .items__elm {
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
   font-size: 1em;
   text-align: center;
+}
+
+.delete__icon {
+  font-size: 1em;
+  transition: ease-in-out 300ms;
+}
+
+.delete__icon:hover {
+  transform: scale(1.5);
+  cursor: pointer;
 }
 
 .delete__btn {
@@ -120,7 +135,7 @@ body {
   padding: 10px;
 
   border-radius: 10px;
-  background-color: rgba(228, 0, 76, 0.829);
+  background-color: rgba(228, 0, 76, 0.863);
   border: none;
   color: white;
   font-size: 1.4em;
@@ -129,6 +144,7 @@ body {
 }
 
 .delete__btn:hover {
+  transform: scale(1.2);
   box-shadow: 2px 2px 10px #bdbdbd;
   cursor: pointer;
 }
