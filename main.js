@@ -32,19 +32,19 @@ let storageFunctions = {
       itemElm.textContent = `${item}`;
       itemList.appendChild(itemElm);
       itemElm.appendChild(delIcon);
-    }
 
-    delIcon.addEventListener("click", () => {
-      storageFunctions.deleteOneItem();
-      storageFunctions.showItems();
-    });
+      delIcon.addEventListener("click", (e) => {
+        storageFunctions.deleteOneItem(e);
+      });
+    }
   },
 
-  deleteOneItem: () => {
-    let parentItem = itemElm.parentNode;
-    let elmIndex = [...parentItem.children].indexOf(itemElm);
-    itemStore.splice(elmIndex, 1);
+  deleteOneItem: (e) => {
+    const valueToDelete = e.target.parentNode.textContent;
+    const valueIndex = itemStore.indexOf(valueToDelete);
+    itemStore.splice(valueIndex, 1);
     storage.toStorage();
+    storageFunctions.showItems();
   },
 
   deleteItems: () => {
