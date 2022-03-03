@@ -54,6 +54,7 @@ let storageFunctions = {
   deleteItems: () => {
     localStorage.clear();
     location.reload();
+    window.scrollTo(0, 0);
   },
 };
 
