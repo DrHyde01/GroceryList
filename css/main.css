@@ -49,9 +49,10 @@ body {
 #container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 40px;
+  height: 100vh;
+  width: 100%;
 }
 
 .add__container {
@@ -84,8 +85,8 @@ body {
   align-items: center;
   margin-left: 10px;
   padding: 10px;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50px;
   background-color: rgba(0, 228, 114, 0.829);
   border: none;
@@ -99,6 +100,27 @@ body {
   transform: scale(1.2);
   box-shadow: 2px 2px 10px #bdbdbd;
   cursor: pointer;
+}
+
+.info {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  width: 30%;
+}
+
+.info__text {
+  text-align: center;
+  line-height: 1.8em;
+  color: gray;
+}
+
+.info__icon {
+  font-size: 5em;
+  color: gray;
+  opacity: 0.2;
+  padding: 50px;
 }
 
 .items__container {
@@ -165,15 +187,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 50px;
   width: 100%;
   height: auto;
   background-color: rgba(0, 223, 111, 0.829);
+  background-image: url("../img/foodPattern.png");
+  background-attachment: fixed;
 }
 
 .footer__text {
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  /* box-shadow: 5px 5px 15px black; */
   font-size: small;
-  color: white;
+
   text-align: center;
 }
 
@@ -221,6 +248,9 @@ body {
   .add__input {
     width: 80%;
   }
+  .info {
+    width: 100%;
+  }
   .items__container {
     width: 100%;
     margin: 40px 0px 40px 0px;
@@ -239,7 +269,10 @@ body {
   }
   .add__container,
   .items__container {
-    width: 50%;
+    width: 80%;
+  }
+  .info {
+    width: 80%;
   }
   .items__container {
     width: 50%;

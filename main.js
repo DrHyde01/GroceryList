@@ -1,5 +1,6 @@
 let addInput = document.querySelector(".add__input");
 let addBtn = document.querySelector(".add__btn");
+let infoContainer = document.querySelector(".info");
 let listContainer = document.querySelector(".items__container");
 let itemList = document.querySelector(".items__list");
 let itemElm = "";
@@ -20,8 +21,11 @@ let storageFunctions = {
     if (itemStore.length > 0) {
       listContainer.style.display = "flex";
       delBtn.style.display = "flex";
+      infoContainer.style.display = "none";
     } else {
       listContainer.style.display = "none";
+      delBtn.style.display = "none";
+      infoContainer.style.display = "flex";
     }
     for (let item of itemStore) {
       itemElm = document.createElement("li");
@@ -40,10 +44,10 @@ let storageFunctions = {
   },
 
   deleteOneItem: (e) => {
-    const valueToDelete = e.target.parentNode.textContent;
-    const valueIndex = itemStore.indexOf(valueToDelete);
-    itemStore.splice(valueIndex, 1);
-    storage.toStorage();
+    const valueToDelete = e.target.parentNode.textContent; // Target the parent value
+    const valueIndex = itemStore.indexOf(valueToDelete); // Search the index of the value in the array
+    itemStore.splice(valueIndex, 1); // Delete the value and update the array
+    storage.toStorage(); // Update the localStorage
     storageFunctions.showItems();
   },
 
