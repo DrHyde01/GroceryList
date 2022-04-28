@@ -8,4 +8,4 @@
 
 #### New version using React ⬇️
 
-[Grocery List v2](https://github.com/DrHyde01/GroceryList-v2.com).
+[Grocery List v2](https://github.com/DrHyde01/GroceryList-v2)
